@@ -1,0 +1,244 @@
+<app-header></app-header>
+ <div class="container">
+    
+ <app-erreur [emailNonValid]="zavatra" *ngIf="cacher"></app-erreur>
+    
+  <div class="col-12 card mx-auto" style=" border: none">
+      <form 
+ [formGroup]="registerForm"
+ (ngSubmit)="submit()" 
+ class="card-body"
+>
+ <h2>Qui êtes vous ?</h2> 
+ 
+ <div class="form-group">
+    <div class="row">
+        <div class="col-md-6">
+            <label for="prenom">Prénom *</label>
+            <input
+              [readonly]="this.isEditable" 
+             id="prenom"
+             type="text"
+             formControlName="prenom"
+             class="form-control"
+             placeholder="Prénom"
+             
+            />
+        </div>
+        <div class="col-md-6">
+            <label for="prenom">Nom *</label>
+            <input
+            [readonly]="this.isEditable" 
+             id="prenom"
+             type="text"
+             formControlName="nom"
+             class="form-control"
+             placeholder="nom"
+            />
+        </div>
+        
+    </div>
+        
+        
+</div>
+
+
+<div class="form-group space">
+    <label for="email">Email address *</label>
+    <input
+    [readonly]="this.isEditable" 
+     id="email"
+     type="email"
+     formControlName="email"
+     class="form-control"
+     placeholder="Votre email"
+    />
+    <small *ngIf="registerForm.get('email') && registerForm.get('email')?.errors && registerForm.get('email')?.dirty" class="form-text text-muted">
+      <span [hidden]="!registerForm.get('email')?.errors?.['required']">
+       Email requis.
+      </span><br/>
+      <span [hidden]="!registerForm.get('email')?.errors?.['email']">
+       Entrez une adresse email valide.
+      </span>
+     </small>     
+  
+</div>
+  
+<div  class="form-group space">
+    <label for="sexe">Sexe</label><br>
+    
+      <label   class="radio-inline">
+        <input  [attr.disabled]="this.isEditable?'':null"  type="radio" value="Monsieur" formControlName="sexe" name="sexe" checked>Je  suis un Homme
+      </label>
+
+      <label  class="radio-inline" style="padding-left:15px;">
+        <input  [attr.disabled]="this.isEditable?'':null"   type="radio" formControlName="sexe" value="Madame" name="sexe">Je suis une Femme
+      </label>
+</div>
+
+  <div class="form-group space" >
+    <label for="institution">Institution *</label>
+    <input
+    [readonly]="this.isEditable" 
+     id="institution"
+     type="text"
+     formControlName="institution"
+     class="form-control"
+     placeholder="institution"
+    />
+</div>
+<div class="form-group space">
+    <div class="row">
+        <div class="col-md-6">
+            <label for="adresse">Adresse *</label>
+            <input
+            [readonly]="this.isEditable" 
+             id="adresse"
+             type="text"
+             formControlName="adresse"
+             class="form-control"
+             placeholder="adresse"
+            />
+        </div>
+        <div class="col-md-6">
+            <label for="pays">Pays *</label>
+            <input
+            [readonly]="this.isEditable" 
+             id="pays"
+             type="text"
+             formControlName="pays"
+             class="form-control"
+             placeholder="pays"
+             autocorrect="off"
+             autocomplete="off"
+            />
+        </div>
+        
+    </div>
+        
+        
+</div>
+<div class="form-group space" >
+    <div class="row">
+        <div class="col-md-6">
+            <label for="code">Code postal *</label>
+            <input
+            [readonly]="this.isEditable" 
+             id="code"
+             type="number"
+             formControlName="code"
+             class="form-control"
+             placeholder="code"
+        
+            />
+        </div>
+        <div class="col-md-6">
+            <label for="pays">Ville *</label>
+            <input
+            [readonly]="this.isEditable" 
+             id="ville"
+             type="text"
+             formControlName="ville"
+             class="form-control"
+             placeholder="ville"
+            
+            />
+        </div>
+        
+    </div>
+        
+        
+</div>
+<div class="form-group space" >
+    <div class="row">
+        <div class="col-md-6">
+            <label for="page">Page web personnelle</label>
+            <input
+            [readonly]="this.isEditable" 
+             id="page"
+             type="url"
+             formControlName="page"
+             class="form-control"
+             placeholder="page"
+            />
+          
+        </div>
+        <div class="col-md-6">
+            <label for="paysInstitution">Page web institution </label>
+            <input
+            [readonly]="this.isEditable" 
+             id="paysInstitution"
+             type="url"
+             formControlName="paysInstitution"
+             class="form-control"
+             placeholder="paysInstitution"
+            />
+        </div>
+        
+    </div>
+        
+        
+</div>
+
+
+<hr>
+<div class="form-group space" >
+  <h2 class="space">Quelle inscription souhaitez-vous ?</h2> 
+    <div class="form-check">
+        <input  [attr.disabled]="this.isEditable?'':null"  class="form-check-input" formControlName="inscription" type="radio" value="150" id="etudiant">
+        <label class="form-check-label" for="etudiant">
+          Etudiant (150 EUR)
+        </label>
+    </div>
+    <div class="form-check">
+        <input [attr.disabled]="this.isEditable?'':null"   class="form-check-input" formControlName="inscription" type="radio" value="200" id="academique">
+        <label class="form-check-label" for="academique">
+          Académique (200 EUR)
+        </label>
+    </div>
+    <div class="form-check">
+        <input [attr.disabled]="this.isEditable?'':null"   class="form-check-input" formControlName="inscription" type="radio" value="300" id="entreprise">
+        <label class="form-check-label" for="entreprise">
+          Entreprise (300 EUR)
+        </label>
+    </div>
+</div>
+<hr>
+<h2 class="space">Quelle hébergement souhaitez-vous ?</h2> 
+
+<div class="form-group space" >
+    <div class="form-check">
+        <input [attr.disabled]="this.isEditable?'':null"   class="form-check-input" formControlName="reservation" type="radio" value="150" id="avec">
+        <label class="form-check-label" for="avec">
+          Avec résérvation(150 EUR)
+        </label>
+    </div>
+    <div class="form-check">
+        <input [attr.disabled]="this.isEditable?'':null"   class="form-check-input" formControlName="reservation" type="radio" value="0" id="sans">
+        <label class="form-check-label" for="sans">
+          Sans résérvation (0 EUR)
+        </label>
+    </div>
+</div>
+<hr>
+<div class="form-group row space">
+    <div class="col-md-10">
+      <button
+      [disabled]="this.isEditable" 
+     type="submit"
+     class="btn btn-primary">
+      Pré-valider
+    </button>
+    </div>
+  </div>
+
+    
+   
+</form>
+  
+    <app-info  *ngIf="isSubmited && registerForm.valid" [data]="obj" (resetFunction)="reset($event)" (modifyFunction)="modify($event)"></app-info>
+ 
+  
+
+
+</div>

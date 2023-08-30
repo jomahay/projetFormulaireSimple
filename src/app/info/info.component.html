@@ -1,0 +1,34 @@
+<div  class="card">
+
+    <h5 class="card-header">Récapitulatif de l 'inscription</h5>
+    <div class="card-body">
+      <p class="card-text">Bonjour {{data.sexe}} {{data.nom}}, vous avez procédé à une inscription pour la conférence #MaConf2020</p>
+      <p class="card-text">Le détail de votre enregistrement est le suivant </p>
+      <ul>
+            <li>{{data.descHHebergement}}</li>
+            <li>{{data.descReservation}}</li>
+      </ul>
+      <p class="card-text">Le montant total est de {{data.total}} EUR</p>
+
+      <p class="card-text">
+        Un email vous sera envoyé prochainement à cette adresse {{data.email}} pour la mise en paiement de votre inscription.</p>
+      <p class="card-text">  
+        En vous remerciantde votre inscription , à très bientot à la conference #MaConf2020 
+      </p>
+    </div>
+    <div class="btn-group">
+        <button
+       (click)="reset()"
+       class="btn btn-primary me-2 btn-sm">
+        Confirmer
+      </button>
+        <button
+       (click)="modify()"
+       class="btn btn-primary btn-sm">
+        Modifier les données
+      </button>
+     
+    </div>
+    
+
+</div>
